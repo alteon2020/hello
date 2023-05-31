@@ -1,0 +1,18 @@
+version: "3" # fileformat
+
+services:
+  db:
+    image: postgres
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+    # Parâmetros de volumes serve para persistir os dados localmente,
+    # caso não queira perder tudo toda vez que derrubar o container
+    volumes:
+      - postgres_phx:/var/lib/postgresql/data/
+    # Expõe a porta do docker para ser conectada por algum SGBD ex. Dbeaver
+    # para se conectar de fora do docker ao banco de dados use host localhost porta 5431
+    ports:
+      - "5432:5432"
+volumes:
+  postgres_phx:
